@@ -1,0 +1,584 @@
+[
+    {
+        "id": "456a8c74.8a3954",
+        "type": "tab",
+        "label": "rfid",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "35e69ca9.a157f4",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "1c7a605e.eeb09",
+        "type": "ui_group",
+        "z": "",
+        "name": "Book Switches",
+        "tab": "848b0e54.2006c",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "848b0e54.2006c",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "fb9ff4f1.08e6c8",
+        "type": "http in",
+        "z": "456a8c74.8a3954",
+        "name": "API - Red Book",
+        "url": "/red_book",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 220,
+        "wires": [
+            [
+                "1c81d032.2107c",
+                "55f9fedb.3bf8d"
+            ]
+        ]
+    },
+    {
+        "id": "6eff4eea.cdd55",
+        "type": "change",
+        "z": "456a8c74.8a3954",
+        "name": "Red Book = True",
+        "rules": [
+            {
+                "t": "set",
+                "p": "redbook",
+                "pt": "global",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 240,
+        "wires": [
+            [
+                "1541d132.0b729f"
+            ]
+        ]
+    },
+    {
+        "id": "55f9fedb.3bf8d",
+        "type": "debug",
+        "z": "456a8c74.8a3954",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.id",
+        "targetType": "msg",
+        "x": 360,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "58933789.10d598",
+        "type": "inject",
+        "z": "456a8c74.8a3954",
+        "name": "Setup",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "36b8fe4a.c0b1a2"
+            ]
+        ]
+    },
+    {
+        "id": "36b8fe4a.c0b1a2",
+        "type": "change",
+        "z": "456a8c74.8a3954",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "redbook",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "greenbook",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "bluebook",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1c81d032.2107c",
+        "type": "switch",
+        "z": "456a8c74.8a3954",
+        "name": "BookSet",
+        "property": "payload.id",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "ea86ffb",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "ea86ffb",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 340,
+        "y": 220,
+        "wires": [
+            [
+                "83916457.ff3d08"
+            ],
+            [
+                "6eff4eea.cdd55"
+            ]
+        ]
+    },
+    {
+        "id": "83916457.ff3d08",
+        "type": "change",
+        "z": "456a8c74.8a3954",
+        "name": "Red Book = False",
+        "rules": [
+            {
+                "t": "set",
+                "p": "redbook",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 200,
+        "wires": [
+            [
+                "1541d132.0b729f"
+            ]
+        ]
+    },
+    {
+        "id": "5b17c770.0baae8",
+        "type": "comment",
+        "z": "456a8c74.8a3954",
+        "name": "Click Setup to Reset",
+        "info": "",
+        "x": 130,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "448b511f.1e7dc",
+        "type": "http in",
+        "z": "456a8c74.8a3954",
+        "name": "Set Green Book",
+        "url": "/set_green_book",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 360,
+        "wires": [
+            [
+                "519d4da5.0bdb94",
+                "419d558f.2fa76c"
+            ]
+        ]
+    },
+    {
+        "id": "c22ee593.455448",
+        "type": "change",
+        "z": "456a8c74.8a3954",
+        "name": "Green Book = True",
+        "rules": [
+            {
+                "t": "set",
+                "p": "greenbook",
+                "pt": "global",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 380,
+        "wires": [
+            [
+                "1541d132.0b729f"
+            ]
+        ]
+    },
+    {
+        "id": "419d558f.2fa76c",
+        "type": "debug",
+        "z": "456a8c74.8a3954",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.id",
+        "targetType": "msg",
+        "x": 360,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "519d4da5.0bdb94",
+        "type": "switch",
+        "z": "456a8c74.8a3954",
+        "name": "BookSet",
+        "property": "payload.id",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 340,
+        "y": 360,
+        "wires": [
+            [
+                "15e2a80c.af8db8"
+            ],
+            [
+                "c22ee593.455448"
+            ]
+        ]
+    },
+    {
+        "id": "15e2a80c.af8db8",
+        "type": "change",
+        "z": "456a8c74.8a3954",
+        "name": "Green Book = False",
+        "rules": [
+            {
+                "t": "set",
+                "p": "greenbook",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 340,
+        "wires": [
+            [
+                "1541d132.0b729f"
+            ]
+        ]
+    },
+    {
+        "id": "8cb63392.0731d",
+        "type": "http in",
+        "z": "456a8c74.8a3954",
+        "name": "API - Blue Book",
+        "url": "/set_blue_book",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 480,
+        "wires": [
+            [
+                "a8a28d29.112ce",
+                "6fa32d61.20add4"
+            ]
+        ]
+    },
+    {
+        "id": "535d5994.bfbfa8",
+        "type": "change",
+        "z": "456a8c74.8a3954",
+        "name": "Blue Book = True",
+        "rules": [
+            {
+                "t": "set",
+                "p": "bluebook",
+                "pt": "global",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 500,
+        "wires": [
+            [
+                "1541d132.0b729f"
+            ]
+        ]
+    },
+    {
+        "id": "6fa32d61.20add4",
+        "type": "debug",
+        "z": "456a8c74.8a3954",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.id",
+        "targetType": "msg",
+        "x": 360,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "a8a28d29.112ce",
+        "type": "switch",
+        "z": "456a8c74.8a3954",
+        "name": "BookSet",
+        "property": "payload.id",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 340,
+        "y": 480,
+        "wires": [
+            [
+                "26b2a5c4.40199a"
+            ],
+            [
+                "535d5994.bfbfa8"
+            ]
+        ]
+    },
+    {
+        "id": "26b2a5c4.40199a",
+        "type": "change",
+        "z": "456a8c74.8a3954",
+        "name": "Blue Book = False",
+        "rules": [
+            {
+                "t": "set",
+                "p": "bluebook",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 460,
+        "wires": [
+            [
+                "1541d132.0b729f"
+            ]
+        ]
+    },
+    {
+        "id": "1541d132.0b729f",
+        "type": "function",
+        "z": "456a8c74.8a3954",
+        "name": "Validate Books",
+        "func": "var redBook = global.get(\"redbook\");\nvar greenBook = global.get(\"greenbook\");\nvar blueBook = global.get(\"bluebook\");\n\nif(redBook && greenBook && blueBook) {\n    msg.dimLights = true;\n} else {\n    msg.dimLights = false;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 910,
+        "y": 340,
+        "wires": [
+            [
+                "ebabf657.6bfc08"
+            ]
+        ]
+    },
+    {
+        "id": "ebabf657.6bfc08",
+        "type": "debug",
+        "z": "456a8c74.8a3954",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "dimLights",
+        "targetType": "msg",
+        "x": 1140,
+        "y": 440,
+        "wires": []
+    }
+]
